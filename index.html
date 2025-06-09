@@ -1,30 +1,67 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Team Current Swim School</title>
   <style>
-    body { font-family: Arial, background: #f0f8ff; color: #333; text-align: center; padding: 2em; }
-    header { background: #0077cc; color: white; padding: 20px; border-radius: 10px; }
-    a.button { display: inline-block; padding: 10px 20px; background: #0077cc; color: white; text-decoration: none; border-radius: 5px; }
-    ul { list-style-type: none; padding: 0; }
-    li { margin: 10px 0; }
+    body, html { margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    header {
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    header h1 {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    section {
+      padding: 50px 20px;
+      text-align: center;
+    }
+    .reason {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease-in-out;
+      margin: 40px 0;
+      font-size: 1.5rem;
+    }
+    .reason.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>Team Current Swim School</h1>
-    <p>Fun, Safe Swimming Lessons for Kids!</p>
   </header>
 
-  <section>
-    <h2>Programs</h2>
-    <ul>
-      <li>Beginner - Age 4–6</li>
-      <li>Intermediate - Age 7–10</li>
-      <li>Advanced - Age 11–14</li>
-    </ul>
-    <a class="button" href="mailto:teamcurrent@gmail.com">Register Now</a>
+  <section id="reasons">
+    <div class="reason">💦 Private lessons for just $40/hour!</div>
+    <div class="reason">🌍 Multilingual instructors to suit your family</div>
+    <div class="reason">💸 Best prices in the area—affordable for all!</div>
   </section>
+
+  <script>
+    const reasons = document.querySelectorAll('.reason');
+    window.addEventListener('scroll', () => {
+      const triggerBottom = window.innerHeight * 0.8;
+      reasons.forEach(reason => {
+        const boxTop = reason.getBoundingClientRect().top;
+        if (boxTop < triggerBottom) {
+          reason.classList.add('visible');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
